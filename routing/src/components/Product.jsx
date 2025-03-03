@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { productos } from "../data/productData";
 
-function product() {
+function product({ addProds }) {
   let { productName } = useParams();
   const navigate = useNavigate();
   const product = productos.find((c) => c.name === productName);
@@ -19,23 +19,23 @@ function product() {
     return <Typography variant="h5">product not found</Typography>;
   }
 
+  const handleprod = (Prod) => {
+    addProds(Prod);
+  };
+
   return (
     <Container>
       <Typography variant="h4">{product.name}</Typography>
       <List>
         {product.features.map((feature) => (
-          <ListItem
-            key={feature}
-            button
-            component={Link}
-            to={`/product/${productName}/feature/${feature}`}
-          >
-            <ListItemText primary={feature} />
-          </ListItem>
+          <ListItem key={feature}>Hola{feature}</ListItem>
         ))}
       </List>
       <Button variant="contained" onClick={() => navigate("/")}>
         Back to Home
+      </Button>
+      <Button variant="contained" onClick={() => handleprod(product.name)}>
+        a;adir al carrito
       </Button>
     </Container>
   );
