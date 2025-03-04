@@ -10,44 +10,66 @@ import {
 } from "@mui/material";
 import { productos } from "../data/productData";
 
-function Cart({ Prods, Cants, removeProds, subCants, addCants }) {
+function Cart({ total, Prods, Cants, removeProds, subCants, addCants }) {
   const navigate = useNavigate();
 
   return (
     <Container>
-      <Typography variant="h4">hola</Typography>
+      <Typography variant="h4">Shopping Cart</Typography>
       <List>
         {Prods.map((feature, index) => (
           <ListItem key={index}>
-            <div>{feature}</div>
-            <div>----{Cants[index]}</div>
-            <Button
-              variant="light"
-              className="text-danger"
-              onClick={() => addCants(index)}
+            <ListItemText
+              primary={feature}
+              secondary={`Precio: ${
+                productos.find((p) => p.name === feature).features[0]
+              } | Cantidad: ${Cants[index]}`}
+            />
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "flex-end",
+                gap: "8px",
+              }}
             >
-              +
-            </Button>
-            <Button
-              variant="light"
-              className="text-danger"
-              onClick={() => subCants(index)}
-              disabled={Cants[index] === 1}
-            >
-              -
-            </Button>
-            <Button
-              variant="light"
-              className="text-danger"
-              onClick={() => removeProds(index)}
-            >
-              X
-            </Button>
+              <Button
+                variant="outlined"
+                style={{ borderColor: "grey" }}
+                className="text-danger"
+                onClick={() => addCants(index)}
+              >
+                +
+              </Button>
+              <Button
+                variant="outlined"
+                style={{ borderColor: "grey" }}
+                onClick={() => subCants(index)}
+                disabled={Cants[index] === 1}
+              >
+                -
+              </Button>
+              <Button
+                variant="outlined"
+                style={{ color: "red", borderColor: "grey" }}
+                onClick={() => removeProds(index)}
+              >
+                Remove
+              </Button>
+            </div>
           </ListItem>
         ))}
       </List>
-      <Button variant="contained" onClick={() => navigate("/")}>
-        Back to Home
+      <Typography variant="h6" sx={{ marginY: 2 }}>
+        Total: {total}
+      </Typography>
+      <Button
+        variant="contained"
+        onClick={() => navigate("/")}
+        sx={{
+          backgroundColor: "purple",
+        }}
+      >
+        Go to home
       </Button>
     </Container>
   );

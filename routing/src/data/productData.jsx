@@ -1,19 +1,22 @@
 export const productos = [
   {
-    name: "New York",
-    features: ["Statue of Liberty", "Central Park", "Times Square"],
+    name: "74LS00",
+    features: ["Price: 9.00Q", "Compuerta NAND",9],
   },
   {
-    name: "Paris",
-    features: [
-      "Arco del triunfo",
-      "Eiffel Tower",
-      "Louvre Museum",
-      "Notre-Dame",
-    ],
+    name: "74LS02",
+    features: ["Price: 9.00Q", "Compuerta NOR",9],
   },
   {
-    name: "Tokyo",
-    features: ["Shibuya Crossing", "Tokyo Tower", "Meiji Shrine"],
+    name: "74LS04",
+    features: ["Price: 8.00Q", "Compuerta NOT",8],
+  },
+  {
+    name: "74LS08",
+    features: ["Price: 7.00Q", "Compuerta AND",7],
+  },
+  {
+    name: "74LS32",
+    features: ["Price: 7.00Q", "Compuerta OR",7],
   },
 ];

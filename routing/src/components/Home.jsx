@@ -23,7 +23,10 @@ function Home() {
             component={Link}
             to={`/product/${product.name}`}
           >
-            <ListItemText primary={product.name} />
+            <ListItemText
+              primary={product.name}
+              secondary={product.features[0]}
+            />
           </ListItem>
         ))}
       </List>
