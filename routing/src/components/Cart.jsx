@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { productos } from "../data/productData";
 
-function Cart({ Prods, removeProds }) {
+function Cart({ Prods, Cants, removeProds, subCants, addCants }) {
   const navigate = useNavigate();
 
   return (
@@ -20,17 +20,19 @@ function Cart({ Prods, removeProds }) {
         {Prods.map((feature, index) => (
           <ListItem key={index}>
             <div>{feature}</div>
+            <div>----{Cants[index]}</div>
             <Button
               variant="light"
               className="text-danger"
-              onClick={() => removeProds(index)}
+              onClick={() => addCants(index)}
             >
               +
             </Button>
             <Button
               variant="light"
               className="text-danger"
-              onClick={() => removeProds(index)}
+              onClick={() => subCants(index)}
+              disabled={Cants[index] === 1}
             >
               -
             </Button>
